@@ -18,14 +18,6 @@
     background: #dfeaea;
 }
 
-.dotted-line-color-bottom {
-    border-bottom-color:  
-}
-
-.dotted-line-color-left {
-    border-left-color: #BECC2C6;
-}
-
 /* 
  * THEMES
  */
@@ -60,14 +52,32 @@
     margin-bottom: 19px;    
 }
 
-/*
+/**
  * IMAGES 
  */
  
+.row {
+  margin: 0px;
+}
+ 
+.instruction-sample-charts .col-xs-4 {
+  height:234px;
+}
+
+.vertical-center-hack {
+    height:100%;
+    vertical-align: middle;
+}
+
+.instruction-sample-charts .col-xs-4 img {
+    display:block;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 
-
-/*
+/**
  * BORDERS    
  */
 
@@ -100,10 +110,10 @@
  * CHARTS 
  */
  
- .monthly-pass h1 {
-     margin: 0px;
- }
+.monthly-pass h1 {
+   margin: 0px;
+}
  
- .monthly-pass {
-     padding: 10px;
- }
+.monthly-pass {
+   padding: 10px;
+}
