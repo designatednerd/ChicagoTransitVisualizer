@@ -12,10 +12,21 @@
   "default_locale": "en",
   "background": {
     "page": "src/bg/background.html",
-    "persistent": false
+    "persistent": true
   },
+  "browser_action": {
+		"default_icon": {
+			"19": "icons/icon19.png",
+			"38": "icons/icon38.png"
+		}
+  },
+  "background": {
+		"persistent": false,
+		"scripts": [
+			"src/main.js"
+		]
+	},
   "permissions": [
-    "tabs",
-    "https://www.ventrachicago.com/*"
+    "activeTab"	
   ]
 }
