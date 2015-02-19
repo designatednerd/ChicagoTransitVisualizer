@@ -1,0 +1,109 @@
+/*
+ * COLORS
+ */
+
+.default-text-color {
+    color: #040404;
+}
+
+.chart-background-color {
+    background: #F1F5F7;
+}
+
+.chart-main-color {
+    background: #29a5a5;
+}
+
+.chart-highlight-color {
+    background: #dfeaea;
+}
+
+.dotted-line-color-bottom {
+    border-bottom-color:  
+}
+
+.dotted-line-color-left {
+    border-left-color: #BECC2C6;
+}
+
+/* 
+ * THEMES
+ */
+
+
+.theme-transit > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-transit .navbar .container {
+  width: auto;
+}
+
+/**
+ * LOGO STUFF
+ */
+ 
+.logo {
+    margin-top: 41px;
+}
+
+.logo img {
+    display: inline-block;
+    background: white;
+    padding-right; 10px;
+}
+
+.logo .dashed-border-horizontal {
+    margin-left: 7px;
+    margin-top: -70px;
+    padding-bottom: 70px; 
+    margin-bottom: 19px;    
+}
+
+/*
+ * IMAGES 
+ */
+ 
+
+
+
+/*
+ * BORDERS    
+ */
+
+
+.dashed-border-horizontal {
+    /*Horizontal*/
+    background-image: linear-gradient(to right, rgba(190,193,197,1) 50%, rgba(255,255,255,0) 0%);
+    background-position: left;
+    background-size: 12px 2px;
+    background-repeat: repeat-x;
+    padding-bottom: 2px
+}
+
+/**
+ * INSTRUCTIONS
+ */
+
+.instructions {
+    margin: 72px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+.instructions h1 {
+    font-size: 26px;
+    text-transform: uppercase;
+}
+
+/**
+ * CHARTS 
+ */
+ 
+ .monthly-pass h1 {
+     margin: 0px;
+ }
+ 
+ .monthly-pass {
+     padding: 10px;
+ }
