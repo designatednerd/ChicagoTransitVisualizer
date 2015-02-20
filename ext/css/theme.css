@@ -88,6 +88,13 @@ body a {
     margin-right: auto;
 }
 
+.instruction-download-images .col-md-6 {
+  text-align: center;
+}
+
+.instruction-download-images .col-md-6 img {
+  
+}
 
 /**
  * BUTTONS!
@@ -109,10 +116,11 @@ body a {
     padding-right: 44px;
     padding-top: 7px;
     padding-bottom: 8px;
-    max-height: 52px;        
+    max-height: 52px;    
+    text-decoration: none;    
 }
 
-.big-gray-button:hover, .big-gray-button:active, .big-gray-button:visited {
+.big-gray-button:hover, .big-gray-button:visited {
   text-decoration: none;
   color: #040404;
 }
@@ -123,10 +131,24 @@ body a {
   color: #040404;
 }
 
+.little-link-button-holder {
+  text-align: center;
+  margin-top: 22px;
+}
+
+.little-link-button, .little-link-button:active, .little-link-button:hover, .little-link-button:visited {
+  text-decoration: underline;
+  color: #040404;
+}
+
 /**
  * BORDERS    
  */
 
+.divider {
+  margin-top: 81px;
+  margin-bottom: 55px;
+}
 
 .dashed-border-horizontal {
     /*Horizontal*/
