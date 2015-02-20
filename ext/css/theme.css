@@ -5,6 +5,12 @@
 body {
     font-family: 'Montserrat', sans-serif;
     color: #040404;
+    font-size: 18px;
+}
+
+body h1 {
+  font-size: 26px;
+  text-transform: uppercase;
 }
 
 body a {
@@ -90,10 +96,15 @@ body a {
 
 .instruction-download-images .col-md-6 {
   text-align: center;
+  padding-bottom: 56px;
 }
 
 .instruction-download-images .col-md-6 img {
-  
+    display:block;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 26px;
 }
 
 /**
@@ -160,17 +171,28 @@ body a {
 }
 
 /**
+ * UPLOADS 
+ */
+ 
+.dropzone {
+  background-color: #F1F5F7;
+  max-width: 720px;
+  padding:50px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #29A5A5
+}
+
+.dropzone-description {
+  text-align: center;
+}
+
+/**
  * INSTRUCTIONS
  */
 
 .instructions {
     margin: 72px;
-    font-size: 18px;
-}
-
-.instructions h1 {
-    font-size: 26px;
-    text-transform: uppercase;
 }
 
 /**
