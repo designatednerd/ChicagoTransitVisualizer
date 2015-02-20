@@ -4,15 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <title>Chicago Transit Visualizer</title>
 
     <!-- Bootstrap -->
     <link href="../bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- CSS for this plugin -->
-	<link href="../css/theme.css" rel="stylesheet">
-
+    <link href="../css/theme.css" rel="stylesheet">
+    
+    <!-- Font CSS -->
+    <link href="../css/montserrat.css" rel="stylesheet">
   </head>
   <body>
   	<div class="container theme-transit">
@@ -22,104 +23,129 @@
         <div class="dashed-border-horizontal"></div>
       </div>
       
-      <!-- MAIN INSTRUCTIONS -->
-      <div class="instructions">
-          <h1>Get a visual breakdown of your transit usage</h1>
-          <p>We'll show you whether you need a monthly pass, how much you're spending, train vs. rail comparisons, and how often you reload your card.</p>
-      </div>
-          
-      <!-- SAMPLE IMAGES -->
-      <div class="row instruction-sample-charts">
-        <div class="col-xs-4">
-          <div class="vertical-center-hack">
-            <img src="images/barchart_sample.png"/>
+      <!-- INSTRUCTIONS SECTION -->
+      <div id="instructions-section">
+        <!-- MAIN INSTRUCTIONS -->
+        <div class="instructions">
+            <h1>Get a visual breakdown of your transit usage</h1>
+            <p>We'll show you whether you need a monthly pass, how much you're spending, train vs. rail comparisons, and how often you reload your card.</p>
+        </div>
+            
+        <!-- SAMPLE IMAGES -->
+        <div class="row instruction-sample-charts">
+          <div class="col-xs-4">
+            <div class="vertical-center-hack">
+              <img src="images/barchart_sample.png"/>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <img src="images/piechart_sample.png"/>
+          </div>
+          <div class="col-xs-4">
+            <div class="vertical-center-hack">
+              <img src="images/barchart_sample.png"/>
+            </div>
           </div>
         </div>
-        <div class="col-xs-4">
-          <img src="images/piechart_sample.png"/>
-        </div>
-        <div class="col-xs-4">
-          <div class="vertical-center-hack">
-            <img src="images/barchart_sample.png"/>
+        
+        <!-- BUTTONS! -->
+        <div class="start-button-holder">
+          <div class="big-gray-button-holder">
+            <a class="big-gray-button" href="#start">Where do I start?</a>
+          </div>
+          <div class="little-link-button-holder">
+            <a class="little-link-button" href="#upload">I'm a pro. Send me to the upload form.</a>
           </div>
         </div>
-      </div>
-      
-      <!-- BUTTONS! -->
-      <div class="start-button-holder">
-        <div class="big-gray-button-holder">
-          <a class="big-gray-button" href="#start">Where do I start?</a>
-        </div>
-        <div class="little-link-button-holder">
-          <a class="little-link-button" href="#upload">I'm a pro. Send me to the upload form.</a>
-        </div>
-      </div>
-      
-      <!-- DIVIDER -->
-      <a name="start"></a><div class="divider dashed-border-horizontal"></div>
-  
-      <!-- DOWNLOAD INSTRUCTIONS -->
-      <div class="instructions">
-          <h1>Follow these <s>easy</s> steps</h1>
-          <p>We'll show you whether you need a monthly pass, how much you're spending, train vs. rail comparisons, and how often you reload your card.</p>
-      </div>
+        
+        <!-- DIVIDER -->
+        <a name="start"></a><div class="divider dashed-border-horizontal"></div>
     
-      <div class="row instruction-download-images">
-        <div class="col-md-6">
-          <img src="images/step1.jpg"/>
-          Step 1: Log into your Ventra account.
+        <!-- DOWNLOAD INSTRUCTIONS -->
+        <div class="instructions">
+            <h1>Follow these <s>easy</s> steps</h1>
+            <p>We'll show you whether you need a monthly pass, how much you're spending, train vs. rail comparisons, and how often you reload your card.</p>
         </div>
-        <div class="col-md-6">
-          <img src="images/step2.jpg"/>
-          Step 2: Click the "View Transaction History" link on the left.
+      
+        <div class="row instruction-download-images">
+          <div class="col-md-6">
+            <img src="images/step1.jpg"/>
+            Step 1: Log into your Ventra account.
+          </div>
+          <div class="col-md-6">
+            <img src="images/step2.jpg"/>
+            Step 2: Click the "View Transaction History" link on the left.
+          </div>
+          <div class="col-md-6">
+            <img src="images/step3.jpg"/>
+            Step 3: Set the Date Range to 365 Days.  
+          </div>
+          <div class="col-md-6">
+            <img src="images/step4.jpg"/>
+            Step 4: Set your transaction history to view ALL entries. 
+          </div>
+          <div class="col-md-6">
+            <img src="images/step5.jpg"/>
+            Step 5: Click "Export Transaction History", and save the .csv. 
+          </div>
         </div>
-        <div class="col-md-6">
-          <img src="images/step3.jpg"/>
-          Step 3: Set the Date Range to 365 Days.  
+        
+        <!-- BUTTONS! -->
+        <div class="big-gray-button-holder">
+          <a class="big-gray-button" href="#upload">Let's do this!</a>
         </div>
-        <div class="col-md-6">
-          <img src="images/step4.jpg"/>
-          Step 4: Set your transaction history to view ALL entries. 
+        
+        <!-- DIVIDER -->
+        <a name="upload"></a><div class="divider dashed-border-horizontal"></div>
+        
+        <!-- UPLOAD TARGET -->
+        <div id="dropzone" class="dropzone">
+          <div class="dropzone-description">
+            <h1>Drop Your CSV file here</br>or click to select from filesystem</h1>
+            <p>Don't worry, your data's not going anywhere!<br/>All data is processed locally.</p>
+          </div>
         </div>
-        <div class="col-md-6">
-          <img src="images/step5.jpg"/>
-          Step 5: Click "Export Transaction History", and save the .csv. 
-        </div>
+        
+        <!-- Dropzone error messages handled by the DZ lib -->
+        <div class="dz-error-message"><span data-dz-errormessage></span></div>    
       </div>
       
-            <!-- BUTTONS! -->
-      <div class="big-gray-button-holder">
-        <a class="big-gray-button" href="#upload">Let's do this!</a>
-      </div>
-      
-      <!-- DIVIDER -->
-      <a name="upload"></a><div class="divider dashed-border-horizontal"></div>
-
-      
-      <!-- UPLOAD TARGET -->
-      <div class="dropzone">
-        <div class="dropzone-description">
-          <h1>Drop Your CSV file here</br>or click to select from filesystem</h1>
-          <p>Don't worry, your data's not going anywhere!<br/>All data is processed locally.</p>
+      <!-- DISPLAY SECTION -->
+      <div id="display-section">
+        
+        <!-- MONTHLY PASS -->
+        <div id="monthly-pass" class="chart-background-color">
+            <h1>Monthly Pass Analysis</h1>
         </div>
-      </div>
-      
-      <!-- PROGRESS BAR -->
-      <div class="progress">
-        <!-- TODO: Add "active" when upload is going and update progress -->
-        <div class="progress-bar progress-bar-striped progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-          <span class="sr-only">60% Complete</span></div>
+        
       </div>
       
     </div>
     
     <!-- SCRIPTS AT THE BOTTOM FOR FASTER PAGE LOAD -->	
+    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="../js/jquery/jquery.min.js"></script>
+    
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+    
     <!--Dropzone: File uploading -->
     <script src="../js/dropzone.js"></script>
     
+    <!-- Date/Time library -->
+    <script src="../js/moment.min.js"></script>
+    
+    <!-- Charting library -->
+    <script src="../js/Chart.js"></script>
+    
+    <!-- Data Parser -->
+    <script src="../js/data-parser.js"></script>
+    
+    <!-- Making data easier -->
+    <script src="../js/data-display.js"></script>
+      
+    <!-- Actual drawing of charts -->
+    <script src="../js/chart-loader.js"></script>
   </body>
 </html>
