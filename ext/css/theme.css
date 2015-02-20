@@ -177,6 +177,11 @@ body a {
  * UPLOADS 
  */
  
+.dz-default, .dz-image, .dz-progress, .dz-success-mark, .dz-error-mark {
+  display: none;
+}
+
+ 
 .dropzone {
   background-color: #F1F5F7;
   max-width: 720px;

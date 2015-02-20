@@ -7,6 +7,7 @@ This project leverages:
 - [Chart.js](http://www.chartjs.org/)
 - [Dropzone.js](http://www.dropzonejs.com/)
 - [jQuery](http://jquery.com/)
+- [Moment.js](http://momentjs.com/)
 
 ###Credits
 A project of [Vokal](http://www.vokal.io) Hack Days: An occasional two days where we get to build whatever the hell we want. If you want to get in on this whole crazy Hack Days thing, come [work with us](http://www.vokal.io/careers). 
