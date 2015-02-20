@@ -1,12 +1,32 @@
-//TODO: Store result of this in local storage.
-//Clear local storage on page close on other thing. 
-function handleFileSelect(evt, callback) {
-  var file = evt.target.files[0]; // FileList object
+Dropzone.autoDiscover = false;
+
+$(function() {
+  // Now that the DOM is fully loaded, create the dropzone, and setup the
+  // event listeners
+  var myDropzone = new Dropzone("div#dropzone", { url: "/file/post"});
+  myDropzone.acceptedFiles=".csv";
+  myDropzone.clickable=true;
+  myDropzone.on("addedfile", function(file) {
+    handleFileSelect(file, function dataParsed(error) { 
+      window.open("../src/VisualizedData.html", "_self", false);
+    });
+  });
+})
+
+function handleFileSelect(file, callback) {
   var reader = new FileReader();
   
+  reader.addEventListener("loadend", function fileLoaded(error) {
+    var text = reader.result;
+    parseCSV(text, function fileParsed(error, parsedStuff) {      
+          window.localStorage.setItem("loads", parsedStuff.loads);
+          window.localStorage.setItem("rides", parsedStuff.rides);
+          callback(null)
+    });  
+  });
+    
   // Read in the text.
-  var text = reader.readAsText(file);
-  callback(null, parseCSV(text))
+  reader.readAsText(file);
 }
 
 /**
@@ -18,8 +38,6 @@ function Ride(date, type, operator, route, description, amount) {
   this.description = description;  
   this.route = route;
   this.date = date;
-
-  //TODO: Strip out $.
   this.amount = amount;
   
   this.isBusRide = function isBusRide() {
@@ -35,7 +53,7 @@ function Ride(date, type, operator, route, description, amount) {
   }
   
   this.isPaceRide = function isPaceRide() {
-    
+    return !this.isPaceRide();
   }
   
   this.trainLine = function trainLine() {
@@ -46,15 +64,20 @@ function Ride(date, type, operator, route, description, amount) {
 
 function Load(date, operator, description, amount) {
   this.date = dateString;
-  this.operator = description;
-  
+  this.operator = operator;
+  this.description = description;
+  this.amount = amount;  
 }
 
-function parseCSV(csvString) {
+function parseCSV(csvString, callback) {
   var lines = csvString.split("\n");  
   var loads = [];
   var rides = [];
-  for (line in lines) {
+  
+  //Skip first line
+  for (var i = 1; i < lines.length; i++) {
+    var line = lines[i];
+    
     // 0 "Transaction Date/Time",
     // 1 "Transaction Type",
     // 2 "Operator",
@@ -70,17 +93,22 @@ function parseCSV(csvString) {
     var description = items[4];
     var amount = items[5];
     
-    //TODO: Convert dateString to date
-    var date = dateString;
+    //Make string a datetime - dates are in format 02/03/2015  9:33:29 AM
+    var dateFormat = "MM/dd/yyyy  h:mm:ss a"
+    var date = moment(dateString, dateFormat);
+    
+    //Strip out $ from amount.
+    var amountBits = amount.split("$");
+    var strippedAmount = amountBits.join("");
     
     if (type == "Sale") {
-      var load = new Load(date, operator, description, amount)
+      var load = new Load(date, operator, description, strippedAmount)
       loads.push(load)
     } else {
-      var ride = new Ride(date, type, operator, route, description, amount);
+      var ride = new Ride(date, type, operator, route, description, strippedAmount);
       rides.push(ride)
     }
   }
   
-  return { loads: loads, rides: rides }
+  callback(null, { loads: loads, rides: rides });
 }

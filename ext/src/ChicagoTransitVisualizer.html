@@ -98,12 +98,15 @@
 
       
       <!-- UPLOAD TARGET -->
-      <div class="dropzone">
+      <div id="dropzone" class="dropzone">
         <div class="dropzone-description">
           <h1>Drop Your CSV file here</br>or click to select from filesystem</h1>
           <p>Don't worry, your data's not going anywhere!<br/>All data is processed locally.</p>
         </div>
       </div>
+      
+      <!-- Dropzone error messages handled by the DZ lib -->
+      <div class="dz-error-message"><span data-dz-errormessage></span></div>
       
       <!-- PROGRESS BAR -->
       <div class="progress">
@@ -115,12 +118,21 @@
     </div>
     
     <!-- SCRIPTS AT THE BOTTOM FOR FASTER PAGE LOAD -->	
+    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="../js/jquery/jquery.min.js"></script>
+    
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+    
     <!--Dropzone: File uploading -->
     <script src="../js/dropzone.js"></script>
+    
+    <!-- Date/Time library -->
+    <script src="../js/moment.min.js"></script>
+    
+    <!-- Data Parser -->
+    <script src="../js/data-parser.js"></script>
     
   </body>
 </html>
