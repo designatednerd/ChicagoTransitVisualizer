@@ -1,18 +1,19 @@
-$(function() {  
-  //Setup chart prefs
-  Chart.defaults.global.responsive = true;
+var dataDisplay;
 
-  function loadDataFromLocalStorage() {
-    var loads = window.localStorage.getItem("loads");
-    var rides = window.localStorage.getItem("rides");
+chrome.runtime.onMessage.addListener(function(parsedData) {
     console.log("LOADED DATA!!!!!!!");
-    return new DataDisplay(loads, rides);
-  }
-  
-  var dataDisplay = loadDataFromLocalStorage();
+    dataDisplay = new DataDisplay(parsedData.loads, parsedData.rides);
 });
 
 
-window.onunload = function nukeLocalStorage() {
-  window.localStorage.clear()
-}
+$(function() {  
+  //Setup chart prefs
+  Chart.defaults.global.responsive = true;  
+});
+
+
+//Move everything into one page
+//wrap divs
+//display: none when hidden
+//display: block when not
+//cram all the scripts into one HTML file

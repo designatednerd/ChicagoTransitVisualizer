@@ -5,9 +5,13 @@ function DataDisplay(loads, rides) {
    *********/
    
   function sortByDate(stuffWithDates) {
-    return stuffWithDates.sort(function(leftSide, rightSide) {
-      return leftSide.date.getTime() - rightSide.date.getTime();
-    });
+    if (stuffWithDates.length == 0) {
+      return stuffWithDates;
+    } else {
+      return stuffWithDates.sort(function(leftSide, rightSide) {
+        return leftSide.date.getTime() - rightSide.date.getTime();
+      });
+    }
   }
   
   //Sort by date before assigning to members. 
