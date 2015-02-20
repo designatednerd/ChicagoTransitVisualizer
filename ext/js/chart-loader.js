@@ -1,5 +1,5 @@
 var dataDisplay;
 
-function displayData(parsedData) {
+function loadCharts(parsedData) {
   dataDisplay = new DataDisplay(parsedData.loads, parsedData.rides);
 }

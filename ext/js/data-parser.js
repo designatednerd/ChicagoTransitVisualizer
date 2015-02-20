@@ -24,7 +24,7 @@ function handleFileSelect(file, callback) {
   reader.addEventListener("loadend", function fileLoaded(error) {
     var text = reader.result;
     parseCSV(text, function fileParsed(error, parsedStuff) {      
-          displayData(parsedStuff)
+          loadCharts(parsedStuff)
           callback(null)
     });  
   });
