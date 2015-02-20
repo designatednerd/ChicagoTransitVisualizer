@@ -8,9 +8,17 @@ function DataDisplay(loads, rides) {
     if (stuffWithDates.length == 0) {
       return stuffWithDates;
     } else {
-      return stuffWithDates.sort(function(leftSide, rightSide) {
-        return leftSide.date.getTime() - rightSide.date.getTime();
+      var sorted = stuffWithDates.sort(function(leftSide, rightSide) {
+        if (leftSide.date > rightSide.date) {
+          return 1;
+        } else if (leftSide.date < rightSide.date) {
+           return -1;
+        } else {
+          return 0;
+        }
       });
+      
+      return sorted;
     }
   }
   
@@ -22,7 +30,7 @@ function DataDisplay(loads, rides) {
    * LOADS INFO *
    **************/
   
-  this.loadDates = function loadDates() {
+  function loadDates() {
     var loadDates = [];
     for (load in this.loads) {
       loadDates.push(load.date);
@@ -31,7 +39,7 @@ function DataDisplay(loads, rides) {
     return loadDates;
   }
   
-  this.totalLoadAmount = function totalLoadAmount() {
+  function totalLoadAmount() {
     var total = 0;
     for (load in this.loads) {
       total += parseFloat(load.amount);
@@ -46,7 +54,7 @@ function DataDisplay(loads, rides) {
   
   //AMOUNT
   
-  this.spendAmountForRides(rides) = function spendAmountForRides(rides) {
+  function spendAmountForRides(rides) {
     var total = 0;
     for (ride in rides) {
       total += parseFloat(ride.amount);
@@ -55,13 +63,13 @@ function DataDisplay(loads, rides) {
     return total;
   }
   
-  this.totalSpendAmount = function totalSpend() {
+  function totalSpend() {
     return this.spendAmountForRides(this.rides);
   }
   
   //DATE
   
-  this.rideDates = function rideDates() {
+  function rideDates() {
     var rideDates = [];
     for (ride in this.rides) {
       rideDates.push(ride.date);
@@ -70,18 +78,19 @@ function DataDisplay(loads, rides) {
     return rideDates;
   }
 
-  this.oldestRideDate = function oldestRideDate() {
-    return this.rideDates[0];
+  function oldestRideDate() {
+    return this.rideDates()[0];
   }
   
-  this.newestRideDate = function newestRideDate() {
-    var lastIndex = this.rideDates.length - 1;
-    return this.rideDates[lastIndex];
+  function newestRideDate() {
+    var rideDates = this.rideDates();
+    var lastIndex = rideDates.length - 1;
+    return rideDates[lastIndex];
   }
   
   //TYPE 
   
-  this.rideTypeCountsForRides(rides) = function rideTypesForRides(rides) {
+  function rideTypesForRides(rides) {
     var busRides = 0;
     var trainRides = 0;
     var unknownRides = 0;
@@ -99,7 +108,7 @@ function DataDisplay(loads, rides) {
     return { bus: busRides, train: trainRides, unknown: unknownRides }
   }
   
-  this.overallRideTypeCounts = function overallRideTypeCounts() {
+  function overallRideTypeCounts() {
     return this.rideTypeCountsForRides(this.rides);
   }
 
@@ -107,7 +116,7 @@ function DataDisplay(loads, rides) {
   
   
   //NOTE: Month is zero-indexed! 0 = january, 11 = december
-  this.ridesForMonth(month) = function ridesForMonth(month) {
+  function ridesForMonth(month) {
     var monthRides = [];
     for (ride in this.rides) {
       if (moment(ride.date).month() == month) {
@@ -118,16 +127,16 @@ function DataDisplay(loads, rides) {
     return monthRides;    
   }
   
-  this.spendAmountForMonth(month) = function spendAmountForMonth(month) {
+  function spendAmountForMonth(month) {
     return this.spendAmountForRides(this.ridesForMonth(month));
   }
   
-  this.rideTypeCountsForMonth(month) = function rideTypeCountsForMonth(month) {    
+  function rideTypeCountsForMonth(month) {    
     return this.rideTypeCountsForRides(this.ridesForMonth(month));
   }
   
   //1 = monday 7 = sunday
-  this.ridesForDayOfWeek(dayOfWeek) = function ridesForDay(dayOfWeek) {
+  function ridesForDay(dayOfWeek) {
     var dayRides = [];
     for (ride in this.rides) {
       if(moment(ride.date).isoWeekday() == dayOfWeek) {
@@ -138,11 +147,11 @@ function DataDisplay(loads, rides) {
     return dayRides;
   }
   
-  this.spendAmountForDayOfWeek(dayOfWeek) = function spendAmountForDay(dayOfWeek) {
+  function spendAmountForDay(dayOfWeek) {
     return this.rideTypeCountsForRides(this.ridesForDayOfWeek(dayOfWeek))
   }
    
-  this.rideTypeCountsForDay(dayOfWeek) = function rideTypeCountsForDay(dayOfWeek) {
+  function rideTypeCountsForDay(dayOfWeek) {
     return this.rideTypeCountsForRides(this.ridesForDayOfWeek(dayOfWeek))
   }
 }

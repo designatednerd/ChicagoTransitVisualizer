@@ -6,9 +6,10 @@ $(function() {
   var myDropzone = new Dropzone("div#dropzone", { url: "/file/post"});
   myDropzone.acceptedFiles=".csv";
   myDropzone.clickable=true;
+  myDropzone.previewTemplate="";
   myDropzone.on("addedfile", function(file) {
     handleFileSelect(file, function dataParsed(error) { 
-      $("div#instructions-section")
+      $("div#instructions-section").hide();
       $("div#display-section").show();
     });
   });
@@ -104,7 +105,7 @@ function parseCSV(csvString, callback) {
     var amountBits = amount.split("$");
     var strippedAmount = amountBits.join("");
     
-    if (type == "Sale") {
+    if (type === "Sale") {
       var load = new Load(date, operator, description, strippedAmount)
       loads.push(load)
     } else {
