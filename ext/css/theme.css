@@ -1,0 +1,212 @@
+/**
+ * GLOBALS
+ */
+ 
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #040404;
+    font-size: 18px;
+}
+
+body h1 {
+  font-size: 26px;
+  text-transform: uppercase;
+}
+
+body a {
+  color: #040404;
+}
+
+/*
+ * COLORS
+ */
+
+.default-text-color {
+}
+
+.chart-background-color {
+    background: #F1F5F7;
+}
+
+.chart-main-color {
+    background: #29a5a5;
+}
+
+.chart-highlight-color {
+    background: #dfeaea;
+}
+
+/* 
+ * THEMES
+ */
+
+
+.theme-transit > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-transit .navbar .container {
+  width: auto;
+}
+
+/**
+ * LOGO STUFF
+ */
+ 
+.logo {
+    margin-top: 41px;
+}
+
+.logo img {
+    display: inline-block;
+    background: white;
+    padding-right; 10px;
+}
+
+.logo .dashed-border-horizontal {
+    margin-left: 7px;
+    margin-top: -70px;
+    padding-bottom: 70px; 
+    margin-bottom: 19px;    
+}
+
+/**
+ * IMAGES 
+ */
+ 
+.row {
+  margin: 0px;
+}
+ 
+.instruction-sample-charts .col-xs-4 {
+  height:234px;
+}
+
+.vertical-center-hack {
+    height:100%;
+    vertical-align: middle;
+}
+
+.instruction-sample-charts .col-xs-4 img {
+    display:block;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.instruction-download-images .col-md-6 {
+  text-align: center;
+  padding-bottom: 56px;
+}
+
+.instruction-download-images .col-md-6 img {
+    display:block;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 26px;
+}
+
+/**
+ * BUTTONS!
+ */
+ 
+.start-button-holder {
+  margin-top: 79px;
+}
+ 
+.big-gray-button-holder {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+ 
+.big-gray-button {
+    background: #A1A3A4;
+    font-size: 26px;
+    text-transform: uppercase;
+    max-width: 360px;
+    padding-left: 44px;
+    padding-right: 44px;
+    padding-top: 7px;
+    padding-bottom: 8px;
+    max-height: 52px;    
+    text-decoration: none;    
+}
+
+.big-gray-button:hover, .big-gray-button:visited {
+  text-decoration: none;
+  color: #040404;
+}
+
+.big-gray-button:active {
+  text-decoration: none;
+  background-color: #29A5A5;
+  color: #040404;
+}
+
+.little-link-button-holder {
+  text-align: center;
+  margin-top: 22px;
+}
+
+.little-link-button, .little-link-button:active, .little-link-button:hover, .little-link-button:visited {
+  text-decoration: underline;
+  color: #040404;
+}
+
+/**
+ * BORDERS    
+ */
+
+.divider {
+  margin-top: 81px;
+  margin-bottom: 55px;
+}
+
+.dashed-border-horizontal {
+    /*Horizontal*/
+    background-image: linear-gradient(to right, rgba(190,193,197,1) 50%, rgba(255,255,255,0) 0%);
+    background-position: left;
+    background-size: 12px 2px;
+    background-repeat: repeat-x;
+    padding-bottom: 2px
+}
+
+/**
+ * UPLOADS 
+ */
+ 
+.dropzone {
+  background-color: #F1F5F7;
+  max-width: 720px;
+  padding:50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 55px;
+  border: 1px solid #29A5A5
+}
+
+.dropzone-description {
+  text-align: center;
+}
+
+/**
+ * INSTRUCTIONS
+ */
+
+.instructions {
+    margin: 72px;
+}
+
+/**
+ * CHARTS 
+ */
+ 
+.monthly-pass h1 {
+   margin: 0px;
+}
+ 
+.monthly-pass {
+   padding: 10px;
+}
