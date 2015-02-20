@@ -1,4 +1,6 @@
 function DataDisplay(loads, rides) {
+  var monthsInPlay;
+  
   
   /*********
    * SETUP *
@@ -114,12 +116,77 @@ function DataDisplay(loads, rides) {
 
   //TIME & DATE
   
+  //Month
+  
+  function allMonthLabels() {
+    //If we've already figured this out, just return it. 
+    if (monthsInPlay != null) {
+      return monthsInPlay;
+    }
+    
+    this.monthsInPlay = [];
+    
+    var firstMonth = oldestRideDate().month()
+    var lastMonth = newestRideDate().month();
+    
+    if (firstMonth > lastMonth) {
+      lastMonth += 12; //
+    }
+    
+    for (var i = firstMonth; i < lastMonth; i++) {
+      var monthIndex = i % 12; 
+      
+      switch (monthIndex) {
+        case 0:
+          this.monthsInPlay.push("Jan");
+          break;
+        case 1;
+          this.monthsInPlay.push("Feb");
+          break;
+        case 2;
+          this.monthsInPlay.push("Mar");
+          break;
+        case 3:
+          this.monthsInPlay.push("Apr");
+          break;
+        case 4:
+          this.monthsInPlay.push("May");
+          break;
+        case 5:
+          this.monthsInPlay.push("Jun");
+          break;
+        case 6:
+          this.monthsInPlay.push("Jul");
+          break;
+        case 7:
+          this.monthsInPlay.push("Aug");
+          break;
+        case 8:
+          this.monthsInPlay.push("Sep");
+          break;
+        case 9:
+          this.monthsInPlay.push("Oct");
+          break;
+        case 10:
+          this.monthsInPlay.push("Nov");
+          break;
+        case 11;
+          this.monthsInPlay.push("Dec");
+          break;
+        default;
+          this.monthsInPlay.push("Smarch");
+          break;  
+      }
+    }
+    
+    return monthsInPlay;    
+  }
   
   //NOTE: Month is zero-indexed! 0 = january, 11 = december
   function ridesForMonth(month) {
     var monthRides = [];
     for (ride in this.rides) {
-      if (moment(ride.date).month() == month) {
+      if (ride.date.month() == month) {
         monthRides.push(ride);
       }
     }
@@ -135,11 +202,18 @@ function DataDisplay(loads, rides) {
     return this.rideTypeCountsForRides(this.ridesForMonth(month));
   }
   
+  
+  //Day
+  
+  function allDayLabels() {
+    return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  }
+  
   //1 = monday 7 = sunday
   function ridesForDay(dayOfWeek) {
     var dayRides = [];
     for (ride in this.rides) {
-      if(moment(ride.date).isoWeekday() == dayOfWeek) {
+      if(ride.date.isoWeekday() == dayOfWeek) {
         dayRides.push(ride);
       }
     }
