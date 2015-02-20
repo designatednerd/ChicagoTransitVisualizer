@@ -8,9 +8,13 @@ $(function() {
   myDropzone.clickable=true;
   myDropzone.on("addedfile", function(file) {
     handleFileSelect(file, function dataParsed(error) { 
-      window.open("../src/VisualizedData.html", "_self", false);
+      $("div#instructions-section")
+      $("div#display-section").show();
     });
   });
+  
+  //Hide the data display. 
+  $("div#display-section").hide();
 })
 
 function handleFileSelect(file, callback) {
@@ -19,8 +23,7 @@ function handleFileSelect(file, callback) {
   reader.addEventListener("loadend", function fileLoaded(error) {
     var text = reader.result;
     parseCSV(text, function fileParsed(error, parsedStuff) {      
-          window.localStorage.setItem("loads", parsedStuff.loads);
-          window.localStorage.setItem("rides", parsedStuff.rides);
+          displayData(parsedStuff)
           callback(null)
     });  
   });
