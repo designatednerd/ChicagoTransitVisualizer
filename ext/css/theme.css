@@ -111,8 +111,11 @@ body a {
  * BUTTONS!
  */
  
+.start-button-holder {
+  margin-top: 79px;
+}
+ 
 .big-gray-button-holder {
-    margin-top: 79px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -180,6 +183,7 @@ body a {
   padding:50px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 55px;
   border: 1px solid #29A5A5
 }
 
