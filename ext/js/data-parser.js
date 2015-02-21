@@ -23,9 +23,9 @@ function handleFileSelect(file, callback) {
   
   reader.addEventListener("loadend", function fileLoaded(error) {
     var text = reader.result;
-    parseCSV(text, function fileParsed(error, parsedStuff) {      
+    parseCSV(text, function fileParsed(error, parsedStuff) {   
+          callback(null)   
           loadCharts(parsedStuff)
-          callback(null)
     });  
   });
     
@@ -98,7 +98,7 @@ function parseCSV(csvString, callback) {
     var amount = lineArray[5];
     
     //Make string a datetime - dates are in format 02/03/2015  9:33:29 AM
-    var dateFormat = "MM/dd/yyyy  h:mm:ss a"
+    var dateFormat = "MM/DD/YYYY  H:mm:ss A"
     var date = moment(dateString, dateFormat);
     
     //Strip out $ from amount.
