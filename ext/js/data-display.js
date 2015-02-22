@@ -1,14 +1,16 @@
-function DataDisplay(loads, rides) {
+function DataDisplay(aLoads, aRides) {
+  var loads;
+  var rides;
   var monthsPlay;
   var monthNamesInPlay;
-  var ridesByMonth;
+  var ridesMonth;
   var amountByMonth;
 
   /*********
    * SETUP *
    *********/
 
-  function sortByDate(stuffWithDates) {
+  this.sortByDate = function(stuffWithDates) {
     if (stuffWithDates.length === 0) {
       return stuffWithDates;
     } else {
@@ -27,14 +29,16 @@ function DataDisplay(loads, rides) {
   }
 
   //Sort by date before assigning to members. 
-  this.loads = sortByDate(loads);
-  this.rides = sortByDate(rides);
+  this.loads = this.sortByDate(aLoads);
+  this.rides = this.sortByDate(aRides);
+  
+  console.log(this.rides);
   
   /**************
    * LOADS INFO *
    **************/
 
-  function loadDates() {
+  this.loadDates = function() {
     var transactionDates = [];
     for (var i = 0; i < this.loads.length; i++) {
       var load = this.loads[i];
@@ -44,7 +48,7 @@ function DataDisplay(loads, rides) {
     return transactionDates;
   }
   
-  function totalLoadAmount() {
+  this.totalLoadAmount = function() {
     var total = 0;
     for (var i = 0; i < this.loads.length; i++) {
       load = this.loads[i];
@@ -60,51 +64,53 @@ function DataDisplay(loads, rides) {
 
   //AMOUNT
 
-  function spendAmountForRides(rides) {
+  this.spendAmountForRides = function(ridesForSpending) {
     var total = 0;
-    for (var i = 0; i < rides.length; i++) {
-      var ride = rides[i];
-      total += parseFloat(ride.amount);
+    for (var i = 0; i < ridesForSpending.length; i++) {
+      var ride = ridesForSpending[i];
+      var cost = parseFloat(ride.amount);
+      total -= cost;
     }
     
     return total;
   }
 
-  function totalSpend() {
+  this.totalSpend = function() {
     return this.spendAmountForRides(this.rides);
   }
 
   //DATE
   
-  function rideDates() {
+  this.rideDates = function() {
     var dates = [];
-    for (var i = 0; i < rides.length; i++) {
-      var ride = rides[i];
+    for (var i = 0; i < this.rides.length; i++) {
+      var ride = this.rides[i];
       dates.push(ride.date);
     }
     
     return dates;
   }
 
-  function oldestRideDate() {
-    return rideDates()[0];
+  this.oldestRideDate = function() {
+    var allRideDates = this.rideDates();
+    return allRideDates[0];
   }
   
-  function newestRideDate() {
-    var allDates = rideDates();
+  this.newestRideDate = function() {
+    var allDates = this.rideDates();
     var lastIndex = allDates.length - 1;
     return allDates[lastIndex];
   }
   
   //TYPE 
   
-  function rideTypesForRides(rides) {
+  function rideTypesForRides(ridesForTyping) {
     var busRides = 0;
     var trainRides = 0;
     var unknownRides = 0;
     
-    for (var i = 0; i < rides.length; i++) {
-      var ride = rides[i];      
+    for (var i = 0; i < ridesForTyping.length; i++) {
+      var ride = ridesForTyping[i];      
       if (ride.isBusRide()) {
         busRides++;
       } else if (ride.isTrainRide()) {
@@ -117,7 +123,7 @@ function DataDisplay(loads, rides) {
     return { bus: busRides, train: trainRides, unknown: unknownRides }
   }
   
-  function overallRideTypeCounts() {
+  this.overallRideTypeCounts = function() {
     return this.rideTypeCountsForRides(this.rides);
   }
 
@@ -125,15 +131,15 @@ function DataDisplay(loads, rides) {
   
   //Month
   
-  function monthsInPlay() {
+  this.monthsInPlay = function() {
     if (this.monthsPlay != null) {
       return this.monthsPlay;
     }
     
     this.monthsPlay = [];
     
-    var firstMonth = oldestRideDate().month()
-    var lastMonth = newestRideDate().month();
+    var firstMonth = this.oldestRideDate().month()
+    var lastMonth = this.newestRideDate().month();
     
     if (firstMonth > lastMonth) {
       lastMonth += 12; //
@@ -152,7 +158,7 @@ function DataDisplay(loads, rides) {
       return this.monthNamesInPlay
     }
     
-    var months = monthsInPlay();
+    var months = this.monthsInPlay();
     this.monthNamesInPlay = [];
     
     for (var i = 0; i < months.length; i++) {
@@ -205,21 +211,21 @@ function DataDisplay(loads, rides) {
     return this.monthNamesInPlay;    
   }
   
-  function ridesByMonth() {
-    if (this.ridesByMonth != null) {
-      return this.ridesByMonth;
+  this.ridesByMonth = function() {
+    if (this.ridesMonth != null) {
+      return this.ridesMonth;
     }
     
-    var months = monthsInPlay();
-    this.ridesByMonth = [];
-    for (var i = 0; i < months.count; i++) {
+    var months = this.monthsInPlay();
+    this.ridesMonth = [];
+    for (var i = 0; i < months.length; i++) {
       var month = months[i];
       var actualMonth = month % 12;
-      var rides = ridesForMonth(actualMonth);
-      this.ridesByMonth.push(rides);
+      var ridesForActualMonth = this.ridesForMonth(actualMonth);
+      this.ridesMonth.push(ridesForActualMonth);
     }
     
-    return this.ridesByMonth;
+    return this.ridesMonth;
   }
   
   this.costByMonth = function() {
@@ -227,12 +233,12 @@ function DataDisplay(loads, rides) {
       return this.amountByMonth;
     }
     
-    var months = monthsInPlay();
+    var months = this.monthsInPlay();
     this.amountByMonth = [];
-    for (var i = 0; i < months.count; i++) {
+    for (var i = 0; i < months.length; i++) {
       var month = months[i];
       var actualMonth = month % 12;
-      var amount = spendAmountForMonth(actualMonth);
+      var amount = this.spendAmountForMonth(actualMonth);
       this.amountByMonth.push(amount);
     }
     
@@ -240,7 +246,7 @@ function DataDisplay(loads, rides) {
   } 
   
   //NOTE: Month is zero-indexed! 0 = january, 11 = december
-  function ridesForMonth(month) {
+  this.ridesForMonth = function(month) {
     var monthRides = [];
     for (var i = 0; i < this.rides.length; i++) {
       var ride = this.rides[i];
@@ -252,12 +258,15 @@ function DataDisplay(loads, rides) {
     return monthRides;    
   }
   
-  function spendAmountForMonth(month) {
-    return this.spendAmountForRides(this.ridesForMonth(month));
+  this.spendAmountForMonth = function(spendMonth) {
+    var ridesForSpendAmount = this.ridesForMonth(spendMonth);
+    
+    return this.spendAmountForRides(ridesForSpendAmount);
   }
   
-  function rideTypeCountsForMonth(month) {    
-    return this.rideTypeCountsForRides(this.ridesForMonth(month));
+  this.rideTypeCountsForMonth = function(typeMonth) {    
+    var ridesForTypeCount = this.ridesByMonth(typeMonth);
+    return this.rideTypeCountsForRides(ridesForTypeCount);
   }
   
   
@@ -268,7 +277,7 @@ function DataDisplay(loads, rides) {
   }
   
   //1 = monday 7 = sunday
-  function ridesForDay(dayOfWeek) {
+  this.ridesForDayOfWeek = function(dayOfWeek) {
     var dayRides = [];
     for (var i = 0; i < this.rides.length; i++) {
       var ride = this.rides[i];      
@@ -280,11 +289,11 @@ function DataDisplay(loads, rides) {
     return dayRides;
   }
   
-  function spendAmountForDay(dayOfWeek) {
+  this.spendAmountForDay = function(dayOfWeek) {
     return this.rideTypeCountsForRides(this.ridesForDayOfWeek(dayOfWeek))
   }
    
-  function rideTypeCountsForDay(dayOfWeek) {
+  this.rideTypeCountsForDay = function(dayOfWeek) {
     return this.rideTypeCountsForRides(this.ridesForDayOfWeek(dayOfWeek))
   }
 }
