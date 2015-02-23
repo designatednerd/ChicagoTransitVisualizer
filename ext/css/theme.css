@@ -210,7 +210,7 @@ body a {
   padding: 25px;
 }
  
-.monthly-pass h1 {
+.chart-background h1 {
    margin: 0px;
 }
 
@@ -222,5 +222,6 @@ body a {
 
 .tax-adjust {
   margin-top: 25px;
+  margin-bottom: 25px;
 }
 
