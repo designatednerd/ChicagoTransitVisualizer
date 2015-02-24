@@ -24,9 +24,6 @@ body a {
 .default-text-color {
 }
 
-.chart-background-color {
-    background: #F1F5F7;
-}
 
 .chart-main-color {
     background: #29a5a5;
@@ -208,10 +205,23 @@ body a {
  * CHARTS 
  */
  
-.monthly-pass h1 {
-   margin: 0px;
+.chart-background {
+  background: #F1F5F7;
+  padding: 25px;
 }
  
-.monthly-pass {
-   padding: 10px;
+.chart-background h1 {
+   margin: 0px;
 }
+
+.monthly-pass-chart {
+  width: 100% !important;
+  max-width: 800px;
+  height: auto !important;
+}
+
+.tax-adjust {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+

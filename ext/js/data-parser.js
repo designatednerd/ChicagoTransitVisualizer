@@ -23,9 +23,9 @@ function handleFileSelect(file, callback) {
   
   reader.addEventListener("loadend", function fileLoaded(error) {
     var text = reader.result;
-    parseCSV(text, function fileParsed(error, parsedStuff) {      
-          displayData(parsedStuff)
-          callback(null)
+    parseCSV(text, function fileParsed(error, parsedStuff) {   
+          callback(null)   
+          loadCharts(parsedStuff)
     });  
   });
     
@@ -67,20 +67,21 @@ function Ride(date, type, operator, route, description, amount) {
 }
 
 function Load(date, operator, description, amount) {
-  this.date = dateString;
+  this.date = date;
   this.operator = operator;
   this.description = description;
   this.amount = amount;  
 }
 
 function parseCSV(csvString, callback) {
-  var lines = csvString.split("\n");  
+  
+  var lineArrays = $.csv.toArrays(csvString);
   var loads = [];
   var rides = [];
   
   //Skip first line
-  for (var i = 1; i < lines.length; i++) {
-    var line = lines[i];
+  for (var i = 1; i < lineArrays.length; i++) {
+    var lineArray = lineArrays[i];
     
     // 0 "Transaction Date/Time",
     // 1 "Transaction Type",
@@ -89,16 +90,15 @@ function parseCSV(csvString, callback) {
     // 4 "Description",
     // 5 "Amount"
 
-    var items = line.split(",")
-    var dateString = items[0];
-    var type = items[1];
-    var operator = items[2];
-    var route = items[3];
-    var description = items[4];
-    var amount = items[5];
+    var dateString = lineArray[0];
+    var type = lineArray[1];
+    var operator = lineArray[2];
+    var route = lineArray[3];
+    var description = lineArray[4];
+    var amount = lineArray[5];
     
     //Make string a datetime - dates are in format 02/03/2015  9:33:29 AM
-    var dateFormat = "MM/dd/yyyy  h:mm:ss a"
+    var dateFormat = "MM/DD/YYYY  H:mm:ss A"
     var date = moment(dateString, dateFormat);
     
     //Strip out $ from amount.

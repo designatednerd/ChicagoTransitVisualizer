@@ -88,6 +88,10 @@
             <img src="images/step5.jpg"/>
             Step 5: Click "Export Transaction History", and save the .csv. 
           </div>
+          <div class="col-md-6">
+            <img src="images/step6.jpg"/>
+            Step 6: Upload the .csv file to our visualizer! 
+          </div>
         </div>
         
         <!-- BUTTONS! -->
@@ -114,9 +118,18 @@
       <div id="display-section">
         
         <!-- MONTHLY PASS -->
-        <div id="monthly-pass" class="chart-background-color">
+        <div class="monthly-pass chart-background">
             <h1>Monthly Pass Analysis</h1>
+            <div class="chart-wrapper">
+              <canvas id="monthly-pass-chart" class="monthly-pass-chart" class="chart"></canvas>
+            </div>
         </div>
+        
+        <!-- TAX ADJUSTER -->
+        <div class="chart-background tax-adjust">
+          <h1>Taxes</h1>
+        </div>
+        
         
       </div>
       
@@ -138,6 +151,10 @@
     
     <!-- Charting library -->
     <script src="../js/Chart.js"></script>
+    
+    <!-- CSV library -->
+    <script src="../js/jquery-csv-0.71.js"></script>
+
     
     <!-- Data Parser -->
     <script src="../js/data-parser.js"></script>
