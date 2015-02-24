@@ -161,51 +161,14 @@ function DataDisplay(aLoads, aRides) {
     var months = this.monthsInPlay();
     this.monthNamesInPlay = [];
     
+    var monthNamesRaw = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
     for (var i = 0; i < months.length; i++) {
       var month = months[i];      
       var monthIndex = month % 12; 
-      
-      switch (monthIndex) {
-        case 0:
-          this.monthNamesInPlay.push("Jan");
-          break;
-        case 1:
-          this.monthNamesInPlay.push("Feb");
-          break;
-        case 2:
-          this.monthNamesInPlay.push("Mar");
-          break;
-        case 3:
-          this.monthNamesInPlay.push("Apr");
-          break;
-        case 4:
-          this.monthNamesInPlay.push("May");
-          break;
-        case 5:
-          this.monthNamesInPlay.push("Jun");
-          break;
-        case 6:
-          this.monthNamesInPlay.push("Jul");
-          break;
-        case 7:
-          this.monthNamesInPlay.push("Aug");
-          break;
-        case 8:
-          this.monthNamesInPlay.push("Sep");
-          break;
-        case 9:
-          this.monthNamesInPlay.push("Oct");
-          break;
-        case 10:
-          this.monthNamesInPlay.push("Nov");
-          break;
-        case 11:
-          this.monthNamesInPlay.push("Dec");
-          break;
-        default:
-          this.monthNamesInPlay.push("Smarch");
-          break;  
-      }
+      var selectedMonthName = monthNamesRaw[month];
+      if (selectedMonthName != null) {
+	      this.monthNamesInPlay.push(selectedMonthName);
+      }  
     }
     
     return this.monthNamesInPlay;    
