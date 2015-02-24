@@ -120,7 +120,7 @@ function DataDisplay(aLoads, aRides) {
       }
     }
     
-    return { bus: busRides, train: trainRides, unknown: unknownRides }
+    return { bus: busRides, train: trainRides, unknown: unknownRides };
   }
   
   this.overallRideTypeCounts = function() {
