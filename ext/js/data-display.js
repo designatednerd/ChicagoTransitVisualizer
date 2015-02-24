@@ -161,7 +161,7 @@ function DataDisplay(aLoads, aRides) {
     var months = this.monthsInPlay();
     this.monthNamesInPlay = [];
     
-    var monthNamesRaw = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
+    var monthNamesRaw = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
     for (var i = 0; i < months.length; i++) {
       var month = months[i];      
       var monthIndex = month % 12; 
